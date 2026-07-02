@@ -62,7 +62,7 @@ header.site{
   max-width:var(--max);margin:0 auto;padding:22px 32px;
   display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
 }
-.brand{display:flex;align-items:center;gap:14px;}
+.brand{display:flex;align-items:center;gap:10px;}
 .brand-text{line-height:1.15;}
 .brand-name{
   font-family:'Montserrat',Arial,sans-serif;font-weight:700;
@@ -74,7 +74,7 @@ header.site{
   font-size:.72rem;letter-spacing:.08em;color:var(--copper-bright);
   text-transform:uppercase;
 }
-.brand-mark{width:26px;height:26px;flex-shrink:0;}
+.brand-mark{height:30px;width:auto;flex-shrink:0;}
 
 nav.main{display:flex;gap:30px;}
 nav.main a{
