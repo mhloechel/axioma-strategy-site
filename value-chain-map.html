@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Biopharma Value Chain, In Motion — Axioma Strategy</title>
+<meta name="description" content="An animated walk through how a therapy actually moves from research to patient — and where the friction hides along the way.">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- Value Chain animation: page-scoped design tokens (namespaced, no collisions with site vars) ---- */
+:root{
+--color-background:#1A1A1A;
+--color-surface:#232120;
+--color-surface-border:rgba(244,238,227,0.10);
+--color-text-primary:#F4EEE3;
+--color-text-muted:#B0A79A;
+--color-teal:#007889;
+--color-cyan:#00B6CC;
+--surface-card:var(--color-surface);
+--border-card:var(--color-surface-border);
+--text-body:var(--color-text-primary);
+--text-body-muted:var(--color-text-muted);
+--accent-resting:var(--color-teal);
+--accent-hover:var(--color-cyan);
+}
+:root{
+--font-display:'Montserrat','Helvetica Neue',Arial,sans-serif;
+--font-body:'Open Sans','Helvetica Neue',Arial,sans-serif;
+--text-h1:40px;
+--text-h2:28px;
+--text-h3:20px;
+--text-body-size:16px;
+--text-eyebrow:12px;
+--text-small:12px;
+--text-stat:32px;
+--weight-display:600;
+--weight-display-bold:700;
+--weight-body:400;
+--weight-body-strong:600;
+--leading-heading:1.2;
+--leading-body:1.6;
+--tracking-eyebrow:0.12em;
+--tracking-wordmark-sub:0.04em;
+}
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+--space-6:24px;--space-7:28px;--space-8:32px;--space-9:36px;--space-10:40px;
+--space-12:48px;--space-16:64px;
+--radius-sm:4px;--radius-md:8px;--radius-lg:14px;--radius-pill:999px;
+}
+
+#chain-stage-wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+#root {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #1A1A1A;
+  overflow: hidden;
+  border: 1px solid var(--color-surface-border);
+}
+@keyframes om-pulse { 0%,100%{ transform:scaleY(0.6); opacity:0.35 } 50%{ transform:scaleY(1.15); opacity:0.85 } }
+@media (max-width: 760px) {
+  #chain-stage-wrap { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <img class="brand-mark" src="axioma-mark.png" alt="Axioma mark">
+      <span class="brand-text">
+        <span class="brand-name">Michael H. Loechel</span><br>
+        <span class="brand-firm">Axioma Strategy</span>
+      </span>
+    </a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="value-chain-innovation.html">Value Chain Innovation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero" style="padding-bottom:0;">
+    <span class="eyebrow">Value Chain Innovation</span>
+    <h1 style="font-size:clamp(2rem,3.6vw,2.8rem);">How medicine actually reaches patients like you.</h1>
+    <p class="hero-lede" style="max-width:62ch;">The biopharma value chain — as tangled as it is invisible. Watch how a therapy moves from research to patient, and where the friction hides along the way.</p>
+  </div>
+
+  <div class="wrap" style="padding-bottom:8px;">
+    <div id="chain-stage-wrap">
+      <div id="root"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="contact-block" style="text-align:center;border-top:none;">
+      <p style="font-size:1.1rem;max-width:52ch;margin:0 auto 26px auto;">See how Enterprise CX turns this tangle into a frictionless, continuous loop.</p>
+      <a href="value-chain-innovation.html" class="btn">Explore the Interactive Value Chain →</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap footer-row">
+    <span class="footer-legal">© 2026 Michael H. Loechel. Axioma Strategy is a division of Axioma Group Inc.</span>
+    <a href="contact.html" class="btn-ghost">Get in touch →</a>
+  </div>
+</footer>
+
+<!-- Real geography: d3-geo + topojson (public CDN, pinned versions) -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js" crossorigin="anonymous"></script>
+
+<!-- React + Babel standalone (in-browser JSX, no build step) -->
+<script src="vc-react.min.js" crossorigin=""></script>
+<script src="vc-react-dom.min.js" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.7/babel.min.js" crossorigin="anonymous"></script>
+
+<script>window.OM_SCENES = '[{"name":"open","dur":5.5},{"name":"simple","dur":7},{"name":"research","dur":7.5},{"name":"trials","dur":8.5},{"name":"regulators","dur":8},{"name":"manufacturing","dur":9},{"name":"payers","dur":8.5},{"name":"delivery","dur":7.5},{"name":"tangle","dur":10},{"name":"axioma","dur":11}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"times","count":1}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "motionEditor": true,
+  "labelDensity": "focus",
+  "packetSpeed": 1,
+  "captionScale": 1
+}/*EDITMODE-END*/;</script>
+
+<script type="text/babel" data-presets="react" src="vc-animations.jsx"></script>
+<script type="text/babel" data-presets="react" src="vc-tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="react" src="vc-chain-scene.jsx"></script>
+
+</body>
+</html>
