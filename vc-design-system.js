@@ -103,7 +103,7 @@ function FooterLegal() {
       color: "var(--color-text-muted)",
       margin: 0
     }
-  }, "Axioma Strategy is a division of Axioma Group Inc.");
+  }, "Axioma Strategy is a division of Axioma Group, Inc.");
 }
 Object.assign(__ds_scope, { FooterLegal });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/brand/FooterLegal.jsx", error: String((e && e.message) || e) }); }
@@ -113,7 +113,7 @@ try { (() => {
 function Wordmark({
   mark = "leaf"
 }) {
-  const src = mark === "flat" ? "../../assets/axioma-leaf-mark-flat.png" : "../../assets/axioma-leaf-mark.png";
+  const src = mark === "flat" ? "axioma-mark.png" : "axioma-mark.png";
   return /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",

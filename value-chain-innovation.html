@@ -13,7 +13,7 @@
 --color-background:#1A1A1A;
 --color-surface:#232120;
 --color-surface-border:rgba(244,238,227,0.10);
---color-text-primary:#F4EEE3;
+--color-text-primary:#FFFFFF;
 --color-text-muted:#B0A79A;
 --color-teal:#007889;
 --color-cyan:#00B6CC;
@@ -54,7 +54,7 @@
     *{box-sizing:border-box;}
     a{color:var(--color-cyan);text-decoration:none;}
     a:hover{color:var(--color-teal);}
-    select option{background:#232120;color:#F4EEE3;}
+    select option{background:#232120;color:#FFFFFF;}
     @media (max-width:760px){
       .axs-hero-title{font-size:30px !important;}
       .axs-nodes-row{flex-direction:column !important;}
@@ -81,7 +81,6 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
-      <a href="value-chain-innovation.html" class="active">Value Chain Innovation</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
@@ -352,6 +351,10 @@
                 <option value="access">Access &amp; Patient Operations</option>
               </sc-raw-select>
             </div>
+            <div style="grid-column:1 / -1;">
+              <label style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--color-text-muted);display:block;margin-bottom:6px;">What's on your mind? (optional)</label>
+              <textarea value="{{ message }}" sc-camel-on-change="{{ onMessageChange }}" rows="4" style="width:100%;background:var(--color-background);border:1px solid var(--color-surface-border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--color-text-primary);font-family:var(--font-body);font-size:14px;resize:vertical;"></textarea>
+            </div>
             <div style="grid-column:1 / -1;margin-top:8px;">
               <x-import component-from-global-scope="AxiomaStrategyDesignSystem_6a33f1.Button" variant="primary" hint-size="100%,44px">Request Strategic Assessment</x-import>
             </div>
@@ -367,7 +370,7 @@
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { viewMode: props.defaultViewMode === 'legacy' ? 'legacy' : 'enterprise', activeNode: 0, name: '', email: '', bottleneck: '', submitted: false };
+    this.state = { viewMode: props.defaultViewMode === 'legacy' ? 'legacy' : 'enterprise', activeNode: 0, name: '', email: '', bottleneck: '', message: '', submitted: false };
   }
 
   setLegacyMode = () => this.setState({ viewMode: 'legacy' });
@@ -380,7 +383,24 @@ class Component extends DCLogic {
   onNameChange = (e) => this.setState({ name: e.target.value });
   onEmailChange = (e) => this.setState({ email: e.target.value });
   onBottleneckChange = (e) => this.setState({ bottleneck: e.target.value });
-  handleSubmit = (e) => { e.preventDefault(); this.setState({ submitted: true }); };
+  onMessageChange = (e) => this.setState({ message: e.target.value });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const payload = {
+      sourcePage: 'Value Chain Innovation',
+      name: this.state.name,
+      email: this.state.email,
+      bottleneck: this.state.bottleneck,
+      message: this.state.message
+    };
+    fetch('https://script.google.com/macros/s/AKfycby2msKWceX7xKraQk-PC9GLxg1hBnNAIFA5ubH3Kv-cd25oXoGpUlYqyym7WlLfjBnKqA/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+    this.setState({ submitted: true });
+  };
   scrollToMap = () => { const el = document.getElementById('axs-map'); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
   scrollToForm = () => { const el = document.getElementById('axs-form'); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
   goToContact = () => { window.location.href = 'contact.html'; };
@@ -390,7 +410,7 @@ class Component extends DCLogic {
     const frictionColor = this.props.frictionAccentColor || '#C9963C';
     const cyan = '#00B6CC';
     const teal = '#007889';
-    const cream = '#F4EEE3';
+    const cream = '#FFFFFF';
     const taupe = '#B0A79A';
     const surfaceBorder = 'rgba(244,238,227,0.10)';
     const surface = '#232120';
@@ -424,8 +444,8 @@ class Component extends DCLogic {
       isLegacy: legacy, isEnterprise: !legacy,
       showKpiBar: this.props.showKpiBar !== false, showMethodology: this.props.showMethodology !== false,
       dragStyle, flowStyle, dragLabelStyle, flowLabelStyle, feedbackBarStyle,
-      name: this.state.name, email: this.state.email, bottleneck: this.state.bottleneck,
-      onNameChange: this.onNameChange, onEmailChange: this.onEmailChange, onBottleneckChange: this.onBottleneckChange,
+      name: this.state.name, email: this.state.email, bottleneck: this.state.bottleneck, message: this.state.message,
+      onNameChange: this.onNameChange, onEmailChange: this.onEmailChange, onBottleneckChange: this.onBottleneckChange, onMessageChange: this.onMessageChange,
       handleSubmit: this.handleSubmit, submitted: this.state.submitted, notSubmitted: !this.state.submitted,
       setLegacyMode: this.setLegacyMode, setEnterpriseMode: this.setEnterpriseMode,
       selectNode0: this.selectNode0, selectNode1: this.selectNode1, selectNode2: this.selectNode2, selectNode3: this.selectNode3, selectNode4: this.selectNode4,
@@ -439,7 +459,7 @@ class Component extends DCLogic {
 
 <footer class="site">
   <div class="wrap footer-row">
-    <span class="footer-legal">© 2026 Michael H. Loechel. Axioma Strategy is a division of Axioma Group Inc.</span>
+    <span class="footer-legal">© 2026 Axioma Strategy, a division of Axioma Group, Inc.</span>
     <a href="contact.html" class="btn-ghost">Get in touch →</a>
   </div>
 </footer>

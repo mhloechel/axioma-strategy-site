@@ -8,7 +8,7 @@ const W = 1600, H = 900;
 
 const C = {
   bg: '#1A1A1A', surface: '#232120', border: 'rgba(244,238,227,0.10)',
-  text: '#F4EEE3', muted: '#B0A79A', teal: '#007889', cyan: '#00B6CC',
+  text: '#FFFFFF', muted: '#B0A79A', teal: '#007889', cyan: '#00B6CC',
 };
 let TW = { labelDensity: 'focus', packetSpeed: 1, captionScale: 1, motionEditor: true };
 
@@ -262,7 +262,7 @@ function ChainScene(props){
       alignItems:'center', justifyContent:'center', textAlign:'center',
       background:'rgba(26,26,26,0.55)', opacity:env, pointerEvents:'none' } },
       React.createElement('div',{ style:{ display:'flex', alignItems:'center', gap:12, marginBottom:34 } },
-        React.createElement('img',{ src:'assets/axioma-leaf-mark.png', style:{ width:34, height:34, objectFit:'contain' } }),
+        React.createElement('img',{ src:'axioma-mark.png', style:{ width:34, height:34, objectFit:'contain' } }),
         React.createElement('div',{ style:{ font:'600 16px "Montserrat", sans-serif',
           letterSpacing:'0.34em', textTransform:'uppercase', color:C.muted } }, 'Axioma Strategy')
       ),
@@ -288,11 +288,11 @@ function ChainScene(props){
         color:C.muted, maxWidth:900, lineHeight:1.5, textWrap:'balance' } },
         'Axioma Strategy applies systems thinking and a disciplined creative problem-solving process to find — and implement — real, enduring solutions.'),
       React.createElement('div',{ style:{ display:'flex', alignItems:'center', gap:13, marginTop:44, opacity:ss(0.35,0.8,p) } },
-        React.createElement('img',{ src:'assets/axioma-leaf-mark.png', style:{ width:40, height:40, objectFit:'contain' } }),
+        React.createElement('img',{ src:'axioma-mark.png', style:{ width:40, height:40, objectFit:'contain' } }),
         React.createElement('div',{ style:{ font:'700 26px "Montserrat", sans-serif', color:C.text, letterSpacing:'0.02em' } }, 'Axioma Strategy')
       ),
       React.createElement('div',{ style:{ marginTop:22, font:'400 15px "Open Sans", sans-serif',
-        color:'rgba(176,167,154,0.65)', opacity:ss(0.5,0.9,p) } }, 'Axioma Strategy is a division of Axioma Group Inc.')
+        color:'rgba(176,167,154,0.65)', opacity:ss(0.5,0.9,p) } }, 'Axioma Strategy is a division of Axioma Group, Inc.')
     );
   }
 
