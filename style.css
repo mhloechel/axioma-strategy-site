@@ -129,8 +129,7 @@ section{padding:8px 0 64px 0;}
 
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
 .list-clean{list-style:none;margin:0;padding:0;}
-.list-clean li{padding:14px 0;border-bottom:1px solid var(--line);}
-.list-clean li:first-child{border-top:1px solid var(--line);}
+.list-clean li{padding:6px 0;}
 
 .service-item{padding:28px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:.6fr 2fr;gap:32px;}
 .service-item:last-child{border-bottom:1px solid var(--line);}
@@ -144,7 +143,7 @@ section{padding:8px 0 64px 0;}
   margin-top:24px;
 }
 .credentials dt:first-child{margin-top:0;}
-.credentials dd{margin:8px 0 0 0;color:var(--text-dim);}
+.credentials dd{margin:8px 0 0 0;color:var(--text-dim);padding-bottom:18px;border-bottom:1px solid var(--line);}
 
 /* ---------- Contact ---------- */
 .contact-block{
