@@ -62,9 +62,21 @@ html,body{margin:0;padding:0;background:#1A1A1A;overflow:hidden;height:100%;}
   overflow: hidden;
 }
 @keyframes om-pulse { 0%,100%{ transform:scaleY(0.6); opacity:0.35 } 50%{ transform:scaleY(1.15); opacity:0.85 } }
+
+/* The engine's own playback chrome (play/pause, scrub bar, video-export
+   button) is authoring/debug UI meant to be suppressed whenever a host
+   editor is present. There is no host here, so hide it outright. */
+[data-omelette-chrome]{display:none !important;}
 </style>
 </head>
 <body>
+
+<script>
+  // Always start this embed fresh at time 0 rather than resuming
+  // whatever playhead position was last persisted (the engine shares
+  // one localStorage key across every instance on the site).
+  try { localStorage.removeItem('animstage:t'); } catch (e) {}
+</script>
 
 <div id="chain-stage-wrap">
   <div id="root"></div>

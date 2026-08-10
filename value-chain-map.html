@@ -67,9 +67,18 @@
 @media (max-width: 760px) {
   #chain-stage-wrap { padding: 0 20px; }
 }
+
+/* The engine's own playback chrome (play/pause, scrub bar, video-export
+   button) is authoring/debug UI meant to be suppressed whenever a host
+   editor is present. There is no host here, so hide it outright. */
+[data-omelette-chrome]{display:none !important;}
 </style>
 </head>
 <body>
+
+<script>
+  try { localStorage.removeItem('animstage:t'); } catch (e) {}
+</script>
 
 <header class="site">
   <div class="nav-row">
