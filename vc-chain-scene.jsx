@@ -8,7 +8,7 @@ const W = 1600, H = 900;
 
 const C = {
   bg: '#1A1A1A', surface: '#232120', border: 'rgba(244,238,227,0.10)',
-  text: '#FFFFFF', muted: '#B0A79A', teal: '#007889', cyan: '#00B6CC',
+  text: '#FFFFFF', muted: '#C9C2B8', teal: '#007889', cyan: '#00B6CC',
 };
 let TW = { labelDensity: 'focus', packetSpeed: 1, captionScale: 1, motionEditor: true };
 

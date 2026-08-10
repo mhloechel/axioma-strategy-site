@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Biopharma Value Chain, In Motion — Axioma Strategy</title>
-<meta name="description" content="An animated walk through how a therapy actually moves from research to patient — and where the friction hides along the way.">
 <link rel="icon" href="favicon.png" type="image/png">
-<link rel="stylesheet" href="style.css">
 <style>
 /* ---- Value Chain animation: page-scoped design tokens (namespaced, no collisions with site vars) ---- */
 :root{
@@ -50,72 +48,28 @@
 --radius-sm:4px;--radius-md:8px;--radius-lg:14px;--radius-pill:999px;
 }
 
+html,body{margin:0;padding:0;background:#1A1A1A;overflow:hidden;}
+
 #chain-stage-wrap {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 clamp(20px, 5vw, 64px);
+  width: 100%;
+  height: 100%;
 }
 #root {
   position: relative;
   width: 100%;
+  height: 100%;
   aspect-ratio: 16 / 9;
   background: #1A1A1A;
   overflow: hidden;
-  border: 1px solid var(--color-surface-border);
 }
 @keyframes om-pulse { 0%,100%{ transform:scaleY(0.6); opacity:0.35 } 50%{ transform:scaleY(1.15); opacity:0.85 } }
-@media (max-width: 760px) {
-  #chain-stage-wrap { padding: 0 20px; }
-}
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="nav-row">
-    <a href="index.html" class="brand" style="text-decoration:none;">
-      <img class="brand-mark" src="axioma-mark.png" alt="Axioma mark">
-      <span class="brand-text">
-        <span class="brand-name">Michael H. Loechel</span><br>
-        <span class="brand-firm">Axioma Strategy</span>
-      </span>
-    </a>
-    <nav class="main">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <div class="wrap hero" style="padding-bottom:0;">
-    <span class="eyebrow">Value Chain Innovation</span>
-    <h1 style="font-size:clamp(2rem,3.6vw,2.8rem);">How medicine actually reaches patients like you.</h1>
-    <p class="hero-lede" style="max-width:62ch;">The biopharma value chain — as tangled as it is invisible. Watch how a therapy moves from research to patient, and where the friction hides along the way.</p>
-  </div>
-
-  <div style="max-width:1400px;margin:0 auto;padding:0 32px 8px;">
-    <div id="chain-stage-wrap">
-      <div id="root"></div>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <div class="contact-block" style="text-align:center;border-top:none;">
-      <p style="font-size:1.1rem;max-width:52ch;margin:0 auto 26px auto;">See how Enterprise CX turns this tangle into a frictionless, continuous loop.</p>
-      <a href="value-chain-innovation.html" class="btn">Explore the Interactive Value Chain →</a>
-    </div>
-  </div>
-</main>
-
-<footer class="site">
-  <div class="wrap footer-row">
-    <span class="footer-legal">© 2026 Axioma Strategy, a division of Axioma Group, Inc.</span>
-    <a href="contact.html" class="btn-ghost">Get in touch →</a>
-  </div>
-</footer>
+<div id="chain-stage-wrap">
+  <div id="root"></div>
+</div>
 
 <!-- Real geography: d3-geo + topojson (public CDN, pinned versions) -->
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" crossorigin="anonymous"></script>

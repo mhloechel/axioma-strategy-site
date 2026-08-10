@@ -7,6 +7,30 @@
 <meta name="description" content="Michael H. Loechel helps global biopharmaceutical organizations define where to compete, how to win, and how to make large-scale change stick.">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="style.css">
+<style>
+.vc-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(10,10,10,0.86);
+  padding:5vh 20px;
+  align-items:flex-start;justify-content:center;
+}
+.vc-modal-overlay.is-open{display:flex;}
+.vc-modal-frame-wrap{
+  position:relative;width:100%;max-width:1200px;aspect-ratio:16/9;
+  background:#1A1A1A;border:1px solid var(--line);
+}
+.vc-modal-frame-wrap iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:0;
+}
+.vc-modal-close{
+  position:absolute;top:-44px;right:0;
+  background:transparent;border:1px solid var(--line);color:var(--text);
+  width:36px;height:36px;border-radius:50%;
+  font-family:'Montserrat',Arial,sans-serif;font-size:18px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.vc-modal-close:hover{border-color:var(--copper-bright);color:var(--copper-bright);}
+</style>
 </head>
 <body>
 
@@ -61,7 +85,7 @@
         <h2>See how the value chain actually moves.</h2>
         <p>Most delay in biopharma is not scientific — it is operational. Watch a short walkthrough of where friction hides across the enterprise value chain, and how applying customer-experience discipline inside the organization turns that drag into flow.</p>
       </div>
-      <a href="value-chain-map.html" style="display:block;position:relative;border:1px solid var(--line);aspect-ratio:16/9;overflow:hidden;text-decoration:none;">
+      <a href="value-chain-map.html" id="vc-watch-trigger" style="display:block;position:relative;border:1px solid var(--line);aspect-ratio:16/9;overflow:hidden;text-decoration:none;">
         <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(0,120,137,0.28), rgba(26,26,26,0.92));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;">
           <div style="width:64px;height:64px;border-radius:50%;border:2px solid var(--copper-bright);display:flex;align-items:center;justify-content:center;">
             <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid var(--copper-bright);margin-left:4px;"></div>
@@ -127,6 +151,46 @@
     <a href="contact.html" class="btn-ghost">Get in touch →</a>
   </div>
 </footer>
+
+<div class="vc-modal-overlay" id="vc-modal-overlay" role="dialog" aria-modal="true" aria-label="How medicine actually reaches patients like you">
+  <div class="vc-modal-frame-wrap">
+    <button type="button" class="vc-modal-close" id="vc-modal-close" aria-label="Close">&times;</button>
+    <iframe id="vc-modal-iframe" title="The Biopharma Value Chain, In Motion" loading="lazy"></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  var trigger = document.getElementById('vc-watch-trigger');
+  var overlay = document.getElementById('vc-modal-overlay');
+  var closeBtn = document.getElementById('vc-modal-close');
+  var iframe = document.getElementById('vc-modal-iframe');
+
+  function openModal(){
+    iframe.src = 'value-chain-embed.html';
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeModal(){
+    overlay.classList.remove('is-open');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  trigger.addEventListener('click', function(e){
+    e.preventDefault();
+    openModal();
+  });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+  });
+})();
+</script>
 
 </body>
 </html>
