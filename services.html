@@ -1,280 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Strategy, innovation, transformation, and commercial advisory services offered by Michael H. Loechel.">
-  <title>Services — Michael H. Loechel</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #1A1A1A;
-      color: #FFFFFF;
-      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    header {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #333;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: #FFFFFF;
-    }
-
-    .header-brand img {
-      width: 32px;
-      height: 32px;
-    }
-
-    .header-brand-text {
-      font-family: Montserrat, sans-serif;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-
-    nav {
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav a {
-      color: #C9C2B8;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: #FFFFFF;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    .intro {
-      margin-bottom: 4rem;
-    }
-
-    .intro h1 {
-      font-family: Montserrat, sans-serif;
-      font-size: 2.5rem;
-      color: #FFFFFF;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
-    .intro p {
-      font-size: 1.1rem;
-      color: #C9C2B8;
-      line-height: 1.8;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 4rem;
-    }
-
-    .service {
-      padding-bottom: 2rem;
-      border-bottom: 1px solid #333;
-    }
-
-    .service h3 {
-      font-family: Montserrat, sans-serif;
-      font-size: 1.25rem;
-      color: #00B6CC;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-
-    .service p {
-      color: #C9C2B8;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .proof-point {
-      margin: 4rem 0;
-      padding: 2rem 0;
-      border-top: 1px solid #C9C2B8;
-      border-bottom: 1px solid #C9C2B8;
-    }
-
-    .proof-point h2 {
-      font-family: Montserrat, sans-serif;
-      font-size: 1.5rem;
-      color: #FFFFFF;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .proof-point p {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-      color: #C9C2B8;
-      line-height: 1.6;
-    }
-
-    .proof-point a {
-      color: #00B6CC;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .proof-point a:hover {
-      color: #007889;
-    }
-
-    .cta-section {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #333;
-    }
-
-    .cta-section p {
-      color: #C9C2B8;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: #007889;
-      color: #FFFFFF;
-      text-decoration: none;
-      border-radius: 2px;
-      font-family: Montserrat, sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: background-color 0.2s;
-    }
-
-    .cta-button:hover {
-      background-color: #005B6A;
-    }
-
-    footer {
-      margin-top: 4rem;
-      padding: 2rem;
-      border-top: 1px solid #333;
-      text-align: center;
-      color: #C9C2B8;
-      font-size: 0.85rem;
-    }
-
-    footer a {
-      color: #00B6CC;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: #007889;
-    }
-
-    @media (max-width: 768px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .intro h1 {
-        font-size: 1.75rem;
-      }
-
-      nav {
-        gap: 1rem;
-      }
-
-      nav a {
-        font-size: 0.8rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Michael H. Loechel</title>
+<meta name="description" content="Strategy, innovation, transformation, and commercial advisory services offered by Michael H. Loechel.">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <a href="https://axiomastrategy.com/index.html" class="header-brand">
-      <img src="https://axiomastrategy.com/axioma-mark.png" alt="Axioma mark">
-      <span class="header-brand-text">Michael H. Loechel<br>Axioma Strategy</span>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <img class="brand-mark" src="axioma-mark.png" alt="Axioma mark">
+      <span class="brand-text">
+        <span class="brand-name">Michael H. Loechel</span><br>
+        <span class="brand-firm">Axioma Strategy</span>
+      </span>
     </a>
-    <nav>
-      <a href="https://axiomastrategy.com/index.html">Home</a>
-      <a href="https://axiomastrategy.com/about.html">About</a>
-      <a href="https://axiomastrategy.com/services.html">Services</a>
-      <a href="https://axiomastrategy.com/contact.html">Contact</a>
+    <nav class="main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="intro">
-      <h1>Services</h1>
-      <p>Engagements built around a specific decision, not a generic playbook.</p>
-      <p style="margin-top: 1rem;">Each engagement is scoped to the choice an organization actually needs to make — and structured so the outcome survives past the final presentation.</p>
+<main>
+  <div class="wrap hero" style="padding-bottom:0;">
+    <span class="eyebrow">Services</span>
+    <h1 style="font-size:clamp(2rem,3.6vw,2.8rem);">Engagements built around a specific decision, not a generic playbook.</h1>
+    <p class="hero-lede" style="max-width:62ch;">Each engagement is scoped to the choice an organization actually needs to make — and structured so the outcome survives past the final presentation.</p>
+  </div>
+
+  <div class="wrap"><div class="cascade-divider"><span></span><span></span><span></span><span></span></div></div>
+
+  <div class="wrap">
+    <section style="padding-top:0;">
+
+      <div class="service-item">
+        <div class="service-num">Strategy</div>
+        <div class="service-body">
+          <h3>Where to compete</h3>
+          <p>Defining market entry, portfolio priorities, and competitive positioning — spanning innovation strategy, digital strategy, technology strategy, and operations strategy — grounded in a clear-eyed view of where an organization can realistically win, not just where it would like to.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-num">Innovation</div>
+        <div class="service-body">
+          <h3>Designing the innovation agenda</h3>
+          <p>Designing enterprise innovation agendas focused on real, meaningful change — the kind built to move P&amp;L, not run as an exercise disconnected from it — including applied creativity facilitation for teams working through genuinely novel problems.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-num">Transformation</div>
+        <div class="service-body">
+          <h3>Making large-scale change stick</h3>
+          <p>Leading multi-workstream transformation end-to-end — the operating model, incentive, and execution work that determines whether a strategy actually changes how an organization behaves. The results typically show up as greater efficiency, simplified processes, tighter alignment between sales and marketing, and a better experience for the customer.</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-num">Advisory</div>
+        <div class="service-body">
+          <h3>Commercial and R&amp;D capabilities advisory</h3>
+          <p>Sharpening commercial and R&amp;D execution — the capabilities, processes, and cross-functional decisions that convert a well-formed strategy into results.</p>
+        </div>
+      </div>
+
     </section>
+  </div>
 
-    <div class="services-grid">
-      <div class="service">
-        <h3>Strategy</h3>
-        <h4 style="font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #C9C2B8; font-weight: normal; margin-bottom: 0.75rem;">Where to compete</h4>
-        <p>Defining market entry, portfolio priorities, and competitive positioning — spanning innovation strategy, digital strategy, technology strategy, and operations strategy — grounded in a clear-eyed view of where an organization can realistically win, not just where it would like to.</p>
-      </div>
+  <div class="wrap">
+    <section style="margin:2rem 0;padding:2rem 0;border-top:1px solid #C9C2B8;border-bottom:1px solid #C9C2B8;text-align:center;">
+      <h2 style="font-size:1.5rem;margin-bottom:1rem;font-family:Montserrat,sans-serif;font-weight:700;">See It In Action</h2>
+      <p style="max-width:62ch;margin:0 auto;color:#C9C2B8;">Value chain strategy is not theoretical. <a href="value-chain-innovation.html">Value Chain Strategy in Action</a> demonstrates how integrated value chain thinking drives enterprise customer experience transformation at scale.</p>
+    </section>
+  </div>
 
-      <div class="service">
-        <h3>Innovation</h3>
-        <h4 style="font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #C9C2B8; font-weight: normal; margin-bottom: 0.75rem;">Designing the innovation agenda</h4>
-        <p>Designing enterprise innovation agendas focused on real, meaningful change — the kind built to move P&L, not run as an exercise disconnected from it — including applied creativity facilitation for teams working through genuinely novel problems.</p>
-      </div>
-
-      <div class="service">
-        <h3>Transformation</h3>
-        <h4 style="font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #C9C2B8; font-weight: normal; margin-bottom: 0.75rem;">Making large-scale change stick</h4>
-        <p>Leading multi-workstream transformation end-to-end — the operating model, incentive, and execution work that determines whether a strategy actually changes how an organization behaves. The results typically show up as greater efficiency, simplified processes, tighter alignment between sales and marketing, and a better experience for the customer.</p>
-      </div>
-
-      <div class="service">
-        <h3>Advisory</h3>
-        <h4 style="font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: #C9C2B8; font-weight: normal; margin-bottom: 0.75rem;">Commercial and R&D capabilities advisory</h4>
-        <p>Sharpening commercial and R&D execution — the capabilities, processes, and cross-functional decisions that convert a well-formed strategy into results.</p>
-      </div>
+  <div class="wrap">
+    <div class="contact-block" style="text-align:center;border-top:none;">
+      <p style="font-size:1.1rem;max-width:52ch;margin:0 auto 26px auto;">Every engagement starts with a conversation about the specific decision in front of you — not a standard proposal.</p>
+      <a href="contact.html" class="btn">Start a Conversation</a>
     </div>
+  </div>
+</main>
 
-    <section class="proof-point">
-      <h2>See It In Action</h2>
-      <p>Value chain strategy is not theoretical. <a href="https://axiomastrategy.com/value-chain-innovation.html">Value Chain Strategy in Action</a> demonstrates how integrated value chain thinking drives enterprise customer experience transformation at scale.</p>
-    </section>
+<footer class="site">
+  <div class="wrap footer-row">
+    <span class="footer-legal">© 2026 Axioma Strategy, a division of Axioma Group, Inc.</span>
+    <a href="contact.html" class="btn-ghost">Get in touch →</a>
+  </div>
+</footer>
 
-    <section class="cta-section">
-      <p>Every engagement starts with a conversation about the specific decision in front of you — not a standard proposal.</p>
-      <a href="https://axiomastrategy.com/contact.html" class="cta-button">Start a Conversation</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Axioma Strategy, a division of Axioma Group, Inc. <a href="https://axiomastrategy.com/contact.html">Get in touch →</a></p>
-  </footer>
 </body>
 </html>
