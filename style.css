@@ -220,3 +220,29 @@ footer.site{border-top:1px solid var(--line);padding:34px 0;margin-top:40px;}
 .article-meta{font-size:.88rem;color:var(--text-dim);margin-bottom:2em;}
 .article-byline{margin-top:3em;padding-top:1.4em;border-top:1px solid var(--line);}
 .article-byline p{font-size:.92rem;}
+
+/* ---------- AI Transformation Office ---------- */
+.aito-feature{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+.aito-feature .aito-svg{width:100%;height:auto;max-width:400px;justify-self:center;}
+.aito-sub{font-size:1.15rem;color:var(--text-dim);max-width:46ch;}
+.aito-punch{font-family:'Montserrat',Arial,sans-serif;font-weight:700;font-size:1.25rem;line-height:1.35;color:var(--text);max-width:34ch;margin:0 0 28px 0;}
+.aito-diagram{max-width:760px;margin:0 auto;}
+.aito-diagram .aito-svg{width:100%;height:auto;display:block;}
+.aito-legend{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:center;margin-top:20px;font-size:.86rem;color:var(--text-dim);}
+.aito-legend span{display:inline-flex;align-items:center;gap:9px;}
+.aito-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;}
+.aito-caption{max-width:62ch;margin:22px auto 0 auto;text-align:center;font-size:.98rem;}
+.pms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:8px;}
+.pms-item{border-top:2px solid var(--copper);padding-top:16px;}
+.pms-item h3{color:var(--copper-bright);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.7em;}
+.pms-item p{font-size:1rem;}
+@media (max-width:760px){
+  .aito-feature{grid-template-columns:1fr;gap:28px;}
+  .aito-feature .aito-svg{order:-1;max-width:300px;}
+  .pms-grid{grid-template-columns:1fr;gap:24px;}
+}
+
+.aito-pill{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:7px 16px 7px 8px;border:1px solid rgba(0,120,137,0.6);border-radius:999px;font-family:'Montserrat',Arial,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.03em;color:var(--text);text-decoration:none;}
+.aito-pill span{background:var(--copper);color:var(--text);border-radius:999px;padding:3px 10px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;}
+.aito-pill:hover{border-color:var(--copper-bright);color:var(--copper-bright);text-decoration:none;}
+.aito-pill + .cta-row{margin-top:20px;}

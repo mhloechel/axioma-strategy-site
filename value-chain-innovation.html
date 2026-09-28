@@ -79,6 +79,7 @@
     </a>
     <nav class="main">
       <a href="index.html">Home</a>
+      <a href="ai-transformation-office.html">AI Transformation Office</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="work.html">Work</a>
@@ -323,6 +324,7 @@
       <x-import component-from-global-scope="AxiomaStrategyDesignSystem_6a33f1.Eyebrow" hint-size="auto,16px">Executive Diagnostic</x-import>
       <h2 style="font-family:var(--font-display);font-weight:600;font-size:28px;color:var(--color-text-primary);margin:14px 0 12px;">Map Your Internal CX Friction</h2>
       <p style="font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--color-text-muted);margin:0;">Request an executive diagnostic session directly with Michael.</p>
+      <p style="font-family:var(--font-body);font-size:13px;line-height:1.55;color:var(--color-text-muted);margin:12px 0 0;">This form is for inquiries from biopharma organizations about a specific decision or engagement. Vendor and service solicitations will not receive a response.</p>
     </div>
 
     <x-import component-from-global-scope="AxiomaStrategyDesignSystem_6a33f1.Card" hint-size="560px,280px">
@@ -330,7 +332,8 @@
         <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
           <div style="text-align:center;padding:24px 0;">
             <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--color-cyan);margin-bottom:10px;">Request received.</div>
-            <p style="font-family:var(--font-body);font-size:15px;color:var(--color-text-muted);margin:0;">Michael will follow up personally within two business days.</p>
+            <p style="font-family:var(--font-body);font-size:15px;color:var(--color-text-muted);margin:0 0 10px;">Michael will follow up personally within two business days.</p>
+            <p style="font-family:var(--font-body);font-size:13px;color:var(--color-text-muted);margin:0;">If you do not hear back, please email inquiries@axiomastrategy.com.</p>
           </div>
         </sc-if>
         <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
@@ -344,6 +347,10 @@
               <input type="email" value="{{ email }}" sc-camel-on-change="{{ onEmailChange }}" required="{{ true }}" style="width:100%;background:var(--color-background);border:1px solid var(--color-surface-border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--color-text-primary);font-family:var(--font-body);font-size:14px;">
             </div>
             <div style="grid-column:1 / -1;">
+              <label style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--color-text-muted);display:block;margin-bottom:6px;">Organization</label>
+              <input type="text" value="{{ organization }}" sc-camel-on-change="{{ onOrganizationChange }}" required="{{ true }}" style="width:100%;background:var(--color-background);border:1px solid var(--color-surface-border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--color-text-primary);font-family:var(--font-body);font-size:14px;">
+            </div>
+            <div style="grid-column:1 / -1;">
               <label style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--color-text-muted);display:block;margin-bottom:6px;">Primary Bottleneck Node</label>
               <sc-raw-select value="{{ bottleneck }}" sc-camel-on-change="{{ onBottleneckChange }}" required="{{ true }}" style="width:100%;background:var(--color-background);border:1px solid var(--color-surface-border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--color-text-primary);font-family:var(--font-body);font-size:14px;">
                 <option value="">Select a stage…</option>
@@ -355,9 +362,13 @@
               </sc-raw-select>
             </div>
             <div style="grid-column:1 / -1;">
-              <label style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--color-text-muted);display:block;margin-bottom:6px;">What is on your mind? (optional)</label>
-              <textarea value="{{ message }}" sc-camel-on-change="{{ onMessageChange }}" rows="4" style="width:100%;background:var(--color-background);border:1px solid var(--color-surface-border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--color-text-primary);font-family:var(--font-body);font-size:14px;resize:vertical;"></textarea>
+              <label style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--color-text-muted);display:block;margin-bottom:6px;">What is on your mind?</label>
+              <textarea value="{{ message }}" sc-camel-on-change="{{ onMessageChange }}" rows="4" required="{{ true }}" minlength="20" placeholder="The decision or challenge in front of you, in a sentence or two." style="width:100%;background:var(--color-background);border:1px solid var(--color-surface-border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--color-text-primary);font-family:var(--font-body);font-size:14px;resize:vertical;"></textarea>
             </div>
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label>Website <input type="text" id="axs-website" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div id="axs-form-error" role="alert" style="display:none;grid-column:1 / -1;color:#E0A96D;font-size:14px;"></div>
             <div style="grid-column:1 / -1;margin-top:8px;">
               <x-import component-from-global-scope="AxiomaStrategyDesignSystem_6a33f1.Button" variant="primary" hint-size="100%,44px">Request Strategic Assessment</x-import>
             </div>
@@ -373,7 +384,8 @@
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { viewMode: props.defaultViewMode === 'legacy' ? 'legacy' : 'enterprise', activeNode: 0, name: '', email: '', bottleneck: '', message: '', submitted: false };
+    this.state = { viewMode: props.defaultViewMode === 'legacy' ? 'legacy' : 'enterprise', activeNode: 0, name: '', email: '', organization: '', bottleneck: '', message: '', submitted: false };
+    this.loadedAt = Date.now();
   }
 
   setLegacyMode = () => this.setState({ viewMode: 'legacy' });
@@ -385,16 +397,31 @@ class Component extends DCLogic {
   selectNode4 = () => this.setState({ activeNode: 4 });
   onNameChange = (e) => this.setState({ name: e.target.value });
   onEmailChange = (e) => this.setState({ email: e.target.value });
+  onOrganizationChange = (e) => this.setState({ organization: e.target.value });
   onBottleneckChange = (e) => this.setState({ bottleneck: e.target.value });
   onMessageChange = (e) => this.setState({ message: e.target.value });
   handleSubmit = (e) => {
     e.preventDefault();
+    const errEl = document.getElementById('axs-form-error');
+    if (errEl) errEl.style.display = 'none';
+    const showError = (msg) => { if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; } };
+    const name = (this.state.name || '').trim();
+    const organization = (this.state.organization || '').trim();
+    const message = (this.state.message || '').trim();
+    const words = message.split(/\s+/).filter(Boolean).length;
+    if (name.length < 2) { showError('Please enter your name.'); return; }
+    if (organization.length < 2) { showError('Please enter your organization.'); return; }
+    if (message.length < 20 || words < 4) { showError('Please describe the decision or challenge in at least a sentence or two.'); return; }
+    const hp = document.getElementById('axs-website');
     const payload = {
       sourcePage: 'Value Chain Innovation',
-      name: this.state.name,
-      email: this.state.email,
+      name: name,
+      email: (this.state.email || '').trim(),
+      organization: organization,
       bottleneck: this.state.bottleneck,
-      message: this.state.message
+      message: message,
+      website: hp ? hp.value : '',
+      elapsedMs: Date.now() - this.loadedAt
     };
     fetch('https://script.google.com/macros/s/AKfycbxynzF7qlkau0EF-uLbw6t6B85NZV-E4OAzdg6iE_-sVsnvPftN6S10kDNCtqveTiRmVA/exec', {
       method: 'POST',
@@ -447,8 +474,8 @@ class Component extends DCLogic {
       isLegacy: legacy, isEnterprise: !legacy,
       showKpiBar: this.props.showKpiBar !== false, showMethodology: this.props.showMethodology !== false,
       dragStyle, flowStyle, dragLabelStyle, flowLabelStyle, feedbackBarStyle,
-      name: this.state.name, email: this.state.email, bottleneck: this.state.bottleneck, message: this.state.message,
-      onNameChange: this.onNameChange, onEmailChange: this.onEmailChange, onBottleneckChange: this.onBottleneckChange, onMessageChange: this.onMessageChange,
+      name: this.state.name, email: this.state.email, organization: this.state.organization, bottleneck: this.state.bottleneck, message: this.state.message,
+      onNameChange: this.onNameChange, onEmailChange: this.onEmailChange, onOrganizationChange: this.onOrganizationChange, onBottleneckChange: this.onBottleneckChange, onMessageChange: this.onMessageChange,
       handleSubmit: this.handleSubmit, submitted: this.state.submitted, notSubmitted: !this.state.submitted,
       setLegacyMode: this.setLegacyMode, setEnterpriseMode: this.setEnterpriseMode,
       selectNode0: this.selectNode0, selectNode1: this.selectNode1, selectNode2: this.selectNode2, selectNode3: this.selectNode3, selectNode4: this.selectNode4,
