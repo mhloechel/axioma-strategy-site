@@ -43,7 +43,7 @@ const DEF = {
   simple: { focus:['boston','dublin','patientUS'], nodes:['boston','dublin','patientUS'],
     labels:['boston','dublin','patientUS'],
     arcs:[['boston','dublin','drug'],['dublin','patientUS','drug']],
-    caption:{ step:'The story we tell', text:'Discover a molecule, make a medicine, hand it to a patient. Simple, right?' } },
+    caption:{ step:'The story everyone tells', text:'Discover a molecule, make a medicine, hand it to a patient. Simple, right?' } },
   research: { focus:['boston','basel'], nodes:['sandiego','basel'],
     labels:['boston','basel','sandiego'],
     arcs:[['sandiego','boston','info'],['basel','boston','info']],
@@ -283,7 +283,7 @@ function ChainScene(props){
           borderRadius:2, alignSelf:'flex-end' } }))
       ),
       React.createElement('div',{ style:{ font:'700 78px "Montserrat", sans-serif',
-        lineHeight:1.05, color:C.text, maxWidth:1120, textWrap:'balance' } }, 'It’s complicated. We make it navigable.'),
+        lineHeight:1.05, color:C.text, maxWidth:1120, textWrap:'balance' } }, 'It is complicated. The right discipline makes it navigable.'),
       React.createElement('div',{ style:{ marginTop:28, font:'400 29px "Open Sans", sans-serif',
         color:C.muted, maxWidth:900, lineHeight:1.5, textWrap:'balance' } },
         'Axioma Strategy applies systems thinking and a disciplined creative problem-solving process to find — and implement — real, enduring solutions.'),
